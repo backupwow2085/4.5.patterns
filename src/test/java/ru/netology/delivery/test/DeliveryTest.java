@@ -51,6 +51,7 @@ class DeliveryTest {
         $("[data-test-id=success-notification]")
                 .shouldBe(visible, Duration.ofSeconds(3))
                 .shouldHave(Condition.text("Успешно!"))
+                .shouldHave(Condition.text("Встреча успешно запланирована на "))
                 .shouldHave(Condition.text(firstMeetingDate));
 
         // Перепланирование
@@ -70,7 +71,8 @@ class DeliveryTest {
 
         $("[data-test-id=success-notification]")
                 .shouldBe(visible, Duration.ofSeconds(3))
-                .shouldHave(text(secondMeetingDate))
+                .shouldHave(Condition.text("Встреча успешно запланирована на "))
+                .shouldHave(Condition.text(secondMeetingDate))
                 .shouldNotHave(text(firstMeetingDate));
     }
 }
