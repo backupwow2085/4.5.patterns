@@ -2,7 +2,7 @@ package ru.netology.delivery.test;
 
 
 import com.codeborne.selenide.Condition;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Before Each;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Keys;
@@ -51,8 +51,7 @@ class DeliveryTest {
         $("[data-test-id=success-notification]")
                 .shouldBe(visible, Duration.ofSeconds(3))
                 .shouldHave(Condition.text("Успешно!"))
-                .shouldHave(Condition.text("Встреча успешно запланирована на "))
-                .shouldHave(Condition.text(firstMeetingDate));
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + firstMeetingDate));
 
         // Перепланирование
         $("[data-test-id=date] input").doubleClick().sendKeys(Keys.BACK_SPACE);
@@ -71,8 +70,7 @@ class DeliveryTest {
 
         $("[data-test-id=success-notification]")
                 .shouldBe(visible, Duration.ofSeconds(3))
-                .shouldHave(Condition.text("Встреча успешно запланирована на "))
-                .shouldHave(Condition.text(secondMeetingDate))
+                .shouldHave(Condition.text("Встреча успешно запланирована на " + secondMeetingDate))
                 .shouldNotHave(text(firstMeetingDate));
     }
 }
